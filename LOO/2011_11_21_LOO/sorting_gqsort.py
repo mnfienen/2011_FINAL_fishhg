@@ -21,14 +21,13 @@ def gqsort_Hgdat(infile,outfile):
     
     ofp = open(outfile,'w')
     for line in tmp:
-        ofp.write('%3d %7d %13.8f %13.8f %2d %13.8f %d\n'
+        ofp.write('%3d %7d %13.8f %13.8f %2d %13.8f\n'
                   %(line[0],
                     line[1],
                     line[2],
                     line[3],
                     line[4],
-                    line[5],
-                    line[6]))
+                    line[5]))
      
     ofp.close()
 def gqsort_Hgdatext(infile,outfile):
