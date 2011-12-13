@@ -31,6 +31,7 @@ def read_and_parse_input(infile):
 
 
 infile = 'NatfishFinalAllobs_20111116_MNF.csv' # filename for the main input
+
 allID = np.loadtxt('IDs.csv',skiprows=1,dtype=int)
 
 # read in all possible left-out indices
@@ -38,7 +39,7 @@ ifp = open('all_out_inds.pkl','rb')
 all_out_IDS = pickle.load(ifp)
 ifp.close()
 
-dropind_row = 0#int(sys.argv[1])
+dropind_row = 1#int(sys.argv[1])
 dropinds = all_out_IDS[dropind_row,:]
 knock_out_ID = allID[dropinds]
 
@@ -49,7 +50,7 @@ for ci in knock_out_ID:
 ofpINDS.close()
 
 # initializations
-max_iter = 15  # maximum allowable iterations
+max_iter = 20  # maximum allowable iterations
 c_iter = 0     # iteration counter starting at zero
 converged = False # flag to indicate when convergence has been achieved
 compcount = [np.inf] # a "comparable_count" variable compcount that keeps track of how many samples are comparable
@@ -95,7 +96,7 @@ master_event_comp = []
 # species-cut combination are comparable (with themselves)
 
 while (c_iter <= max_iter) and (converged == False):
-    #print 'iteration number --> ' + str(c_iter)
+    print 'iteration number --> ' + str(c_iter)
     # ######################################## #
     # # # #  Evaluate all the SpC values # # # #
     # ######################################## #
@@ -123,13 +124,12 @@ while (c_iter <= max_iter) and (converged == False):
                     continue
                   
             comp_SpC = np.unique(SpC[np.nonzero(tmp_comp2==1)[0]])
+            # use set intersection to find all non-zero indices
+            COMPARABLE = COMPARABLE | COMPARABLE2
+            print 'total comparable -->  {0} --> iteration {1}'.format(sum(COMPARABLE),c_iter)
         else:
             continue
-        # use set intersection to find all non-zero indices
-        COMPARABLE = COMPARABLE | COMPARABLE2
-        print 'total comparable -->  {0} --> iteration {1}'.format(sum(COMPARABLE),c_iter)
-     
-
+        
     # do the convergence check and advance the iteration number
     compcount.append(sum(COMPARABLE))
     if compcount[-1]-compcount[-2] == 0:
@@ -137,27 +137,66 @@ while (c_iter <= max_iter) and (converged == False):
     c_iter += 1
     
 # del statements below are to keep memory in check
-del SpC, COMPARABLE2, comp2_inds,tmp_comp2
+ 
+del COMPARABLE2, comp2_inds,tmp_comp2
 # now check on remaining events w.r.t detection limit
 compinds = np.nonzero(COMPARABLE)[0]
 cEvents = Event[compinds]
 # set a variable with all events
 eunich_event = np.unique(Event)
-del Event
+
 cDL = DL[compinds]
-del DL
-del comp_inds
+del compinds
 # find only events that have at least one value with DL==0
 DL_0_Events = cEvents[cDL==0]
 # set a new variable with only the DL==0 events
 eunich_cEvents = np.unique(DL_0_Events)
 del DL_0_Events
 
-# find the events that havse been removed 
+# find the events that have been removed 
 kill_events = np.setxor1d(eunich_cEvents,eunich_event)
 for cev in kill_events:
-    kill_events_inds = np.nonzero(Event==cev)[0]
-    COMPARABLE[kill_events_inds] = 0 
+    COMPARABLE[Event==cev] = 0
+#    kill_events_inds = np.nonzero(Event==cev)[0]
+#    COMPARABLE[kill_events_inds] = 0 
+
+# run a final, special check for cases where the only SpC connection from one
+# event to another is through NDs (in which case they must be knocked out as incomparable)
+# first make a new list of all the comparable SpC codes, DLs, and Event Codes
+cfSpC = SpC[COMPARABLE==1]
+cfEvents = Event[COMPARABLE==1]
+cfDL = DL[COMPARABLE==1]
+del SpC, DL, cDL
+# now, for each comparable event, we investigate the SpC codes within it
+for check_event in np.unique(cfEvents):
+    # set a temporary variable to indicate whether this event is still comparable
+    cEvent_comp = 1
+    cEvent_comp_hardened = 0
+    check_SpC = cfSpC[cfEvents==check_event]
+    check_DL = cfDL[cfEvents==check_event]
+    uniq_check_SpC = np.unique(check_SpC)
+    for currSpC in uniq_check_SpC:    
+        if cEvent_comp_hardened == 0: # this being unity means one link outside the event has been established      
+            if check_event == 4908:
+                1==1
+            # for each of the SpC codes in the event, first see if all of the occurences are ND
+            check_DL_current = check_DL[check_SpC==currSpC]
+            if sum(check_DL_current) < len(check_DL_current): # at least one detect...
+                # next make sure that SpC exists in at least one other event as a valid detection
+                inds_check_SpC_in_check_event = np.nonzero((cfSpC==currSpC) & (cfEvents==check_event))[0]
+                inds_check_SpC_in_cfSpC = np.nonzero(cfSpC==currSpC)[0]
+                inds_check_SpC_outside_check_event = np.setxor1d(inds_check_SpC_in_check_event,inds_check_SpC_in_cfSpC)
+                # check the DLs
+                DLs_outside = cfDL[inds_check_SpC_outside_check_event]
+                if len(inds_check_SpC_outside_check_event) == 0:
+                    cEvent_comp = 0
+                elif sum(DLs_outside) == len(DLs_outside):
+                    cEvent_comp = 0
+                else:
+                    cEvent_comp_hardened = 1
+                    cEvent_comp = 1
+    if cEvent_comp == 0:
+        COMPARABLE[Event==check_event] = 0 
 
 # notcomp are the values with COMPARABLE==0
 notcomp = ID[np.nonzero(COMPARABLE==0)[0]]
