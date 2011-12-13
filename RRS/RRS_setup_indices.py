@@ -12,7 +12,7 @@ num_realizations = 1000
 # set percent to leave out at each iteration - between 0 and 1
 perc_out = 0.1
 # infile from which to determine total number of indices available
-infile = 'NatfishFinalAllobs_20110617.CSV'
+infile = 'NatfishFinalAllobs_20111116_MNF.csv'
 indat = np.genfromtxt(infile,dtype=None,names=True,delimiter=',')
 
 len_all_inds = len(indat['ID'])
@@ -28,7 +28,7 @@ _randsample = sample_without_replacement
 for i in np.arange(num_realizations):
     print i
     all_out_indies[i,:] = np.array(list(_randsample(len_all_inds,cind_length)))
-
+all_out_indies = all_out_indies.astype(int)
 ofp = open(outfile,'wb')
 pickle.dump(all_out_indies,ofp)
 ofp.close()
