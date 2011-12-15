@@ -38,19 +38,21 @@ def LOO_Hg(ID_to_drop,Masterfile,Connectionsfile):
     Wt[Wt<2]=1
     Wt = np.log(Wt) + 1.0
     MasterData[:,headers.index('Wt')]=Wt
-    
+
+
+    # first find the event, species, and length of the ID that is to be dropped - this is required
+    # later for the forward calculation
+    index_to_drop = np.nonzero(ID==ID_to_drop)[0]
+    csp = SpC[index_to_drop]
+    cev = event[index_to_drop]
+    clen = length[index_to_drop]
+    obsHg = Hg_obs[index_to_drop]
     # find all IDs that need to be dropped
-    if ID_to_drop >= 0:
-        dropIDs = drop_ID(ID_to_drop,Connectionsfile)
     
-    # special case for dropping no IDS 
-    # (any negative value for ID_to_drop means drop none)
-    if ID_to_drop < 0:
-        MKlist = ID
-    else:
-        MKlist = np.setdiff1d(ID,dropIDs)
-            
-          
+    dropIDs = drop_ID(ID_to_drop,Connectionsfile)
+    
+    MKlist = np.setdiff1d(ID,dropIDs)
+    
     # make a set out of the ID field
     # SORT MasterData by ID
     MasterData = MasterData[MasterData[:,MKind].argsort()]
@@ -67,11 +69,11 @@ def LOO_Hg(ID_to_drop,Masterfile,Connectionsfile):
 
     # now, write out the datfile in proper formats
     # from Donato's code:
-    # SPC, Event, length, Result, DL, WT
+    # SPC, Event, length, Result, DL, WT, ID (new version of 11/11 requires ID on the end
     ofp = open(datfile,'w')
     for line in CurrMasterData:
-        ofp.write('%3d %7d %13.8f %13.8f %2d %13.8f\n' 
-                  %(line[6],line[7],line[1],line[4],line[3],line[2]))
+        ofp.write('%3d %7d %13.8f %13.8f %2d %13.8f %d\n' 
+                  %(line[6],line[7],line[1],line[4],line[3],line[2],line[MKind]))
     ofp.close()
     
     
@@ -140,43 +142,14 @@ def LOO_Hg(ID_to_drop,Masterfile,Connectionsfile):
     # Event parameters
     Eventpars = np.loadtxt('BestEPs')
    
-    if ID_to_drop < 0:
-        cHg = list()
-        ofp = open('Master_Hg_Modeled.dat','w')
-        ofp.write('%16s %16s %16s\n' %('ID','Measured','Modeled'))
-        for cindex in np.arange(len(SpC)):
-            print 'running index --> ' + str(cindex)
-            csp = SpC[cindex]
-            cev = event[cindex]
-            clen = length[cindex]
-            obsHg = Hg_obs[cindex]
-            # pull the parameter values necessary for calculating Hg for the left-out value
-            spcind = np.nonzero(SpCpars[:,0]==csp)[0]
-            evind = np.nonzero(Eventpars[:,0]==cev)[0]
-                    
-            # calculate mercury for this index
-            cHgtmp = calc_Hg(SpCpars[spcind,1],Eventpars[evind,1],clen)
-            cHg.append((np.exp(cHgtmp)-1)/1000.0)
-            ofp.write('%16d %16.6f %16.6f\n' %(ID[cindex],obsHg,cHg[-1]))
-        obsHg = Hg_obs
-        ofp.close()
-    else:
-        # first find the event, species, and length of the ID that is to be dropped - this is required
-        # later for the forward calculation
-        index_to_drop = np.nonzero(ID==ID_to_drop)[0]
-        csp = SpC[index_to_drop]
-        cev = event[index_to_drop]
-        clen = length[index_to_drop]
-        obsHg = Hg_obs[index_to_drop]
-        
-        # pull the parameter values necessary for calculating Hg for the left-out value
-        spcind = np.nonzero(SpCpars[:,0]==csp)[0]
-        evind = np.nonzero(Eventpars[:,0]==cev)[0]
-        
-        # calculate mercury for this index
-        cHg = calc_Hg(SpCpars[spcind,1],Eventpars[evind,1],clen)
-        cHg = (np.exp(cHg)-1)/1000.0
-        # return the left-out modeled Hg concentraion.
+    # pull the parameter values necessary for calculating Hg for the left-out value
+    spcind = np.nonzero(SpCpars[:,0]==csp)[0]
+    evind = np.nonzero(Eventpars[:,0]==cev)[0]
+    
+    # calculate mercury for this index
+    cHg = calc_Hg(SpCpars[spcind,1],Eventpars[evind,1],clen)
+    cHg = (np.exp(cHg)-1)/1000.0
+    # return the left-out modeled Hg concentraion.
     return cHg, obsHg
     
     
