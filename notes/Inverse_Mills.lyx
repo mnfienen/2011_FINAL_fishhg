@@ -272,7 +272,7 @@ reference "eq:wiki"
  Then, 
 \begin_inset Formula 
 \begin{equation}
-E\left[\text{res}\right]=E\left[x-y|x-y<\alpha\right]=\sigma\frac{-\phi\left(\frac{\alpha}{\sigma}\right)}{\Phi\left(\frac{\alpha}{\sigma}\right)}=\sigma\frac{-\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{1}{2}\frac{\left(\alpha\right)}{\sigma^{2}}^{2}\right)}{\frac{1}{2}\left[1+\text{erf}\left(\frac{\alpha}{\sigma\sqrt{2}}\right)\right]}\label{eq:Eres}
+E\left[\text{res}\right]=E\left[x-y|x-y<\alpha-y\right]=\sigma\frac{-\phi\left(\frac{\alpha-y}{\sigma}\right)}{\Phi\left(\frac{\alpha-y}{\sigma}\right)}=\sigma\frac{-\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{1}{2}\frac{\left(\alpha-y\right)}{\sigma^{2}}^{2}\right)}{\frac{1}{2}\left[1+\text{erf}\left(\frac{\alpha-y}{\sigma\sqrt{2}}\right)\right]}\label{eq:Eres}
 \end{equation}
 
 \end_inset
