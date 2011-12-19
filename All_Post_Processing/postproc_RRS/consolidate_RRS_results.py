@@ -12,15 +12,20 @@ parse_all_flag = 1
 # parse all the results files
 
 # first read in the master ID list
-ID_master = np.loadtxt('../RRS_RESULTS_12_15_2011/all_IDs.dat',skiprows = 1, dtype=int)
+ID_master = np.loadtxt('../../RRS/RRS_RESULTS_12_15_2011/all_IDs.dat',skiprows = 1, dtype=int)
 
+
+# read in the reference values fo Hg, corrected for NDs with Inverse Mills Ratio
+indat_ref = np.genfromtxt('AllHg_reference.dat',names=True,dtype=None)
+ID_ref = indat_ref['ID']
+Hg_obs_ref = indat_ref['Hgobscorr']
 
 # initialize a dictionary to hold the results
 allHg = dict([(x,list()) for x in ID_master])
 
 for crel in xrange(num_rel):
     print 'Running realization %d of %d:' %(crel+1,num_rel)
-    indat = np.genfromtxt('../RRS_RESULTS_12_15_2011/Hg_%d.dat' %(crel),dtype=None,names=True,skiprows=1)
+    indat = np.genfromtxt('../../RRS/RRS_RESULTS_12_15_2011/Hg_%d.dat' %(crel),dtype=None,names=True,skiprows=1)
     for crow in indat:
         allHg[crow[0]].append(crow[1])
 
@@ -32,6 +37,10 @@ ofpHg.write('%12s%12s%12s%12s%12s%12s\n' %('ID','N','min','mean','max','SD'))
 ofpHg_log = open('Hgstats_log.dat','w')
 ofpHg_log.write('%12s%12s%12s%12s%12s%12s\n' %('ID','N','min','mean','max','SD'))
 
+# also calculate the statistics on the residuals using inverse Mills ratio for NDs
+ofpHg_log_res = open('Hgstats_log_res.dat','w')
+ofpHg_log_res.write('%12s%12s%12s%12s%12s%12s%12s%12s\n' %('ID','N','min_abs_res','mean_res','mean_abs_res','max_abs_res','SD_res','SD_res_abs'))
+
 for cid in allHg:
     curr_mercury = np.array(allHg[cid])
     if len(curr_mercury) == 0:
@@ -41,6 +50,8 @@ for cid in allHg:
     if len(curr_mercury) == 0:
         ofpHg.write('%12d%12d%12d%12d%12d%12d\n' %(cid,0,-999,-999,-999,-999))
         ofpHg_log.write('%12d%12d%12d%12d%12d%12d\n' %(cid,0,-999,-999,-999,-999))
+        ofpHg_log_res.write('%12d%12d%12d%12d%12d%12d%12d%12d\n' %(cid,0,-999,-999,-999,-999,-999,-999))
+        
     else:
         nhg   = len(curr_mercury)
         minhg = np.min(curr_mercury)
@@ -53,6 +64,30 @@ for cid in allHg:
         sdhg_log = np.std(curr_mercury_log)
         ofpHg.write('%12d%12d%12.5f%12.5f%12.5f%12.5f\n' %(cid,nhg,minhg,meanhg,maxhg,sdhg))
         ofpHg_log.write('%12d%12d%12.5f%12.5f%12.5f%12.5f\n' %(cid,nhg,minhg_log,meanhg_log,maxhg_log,sdhg))
+        # now handles the residuals
+        hg_obs_curr = Hg_obs_ref[np.nonzero(ID_ref==cid)[0][0]]
+        # log transform
+        hg_obs_curr = np.log(hg_obs_curr * 1000.0) + 1
+        hg_res_curr = (hg_obs_curr-curr_mercury_log)
+        hg_res_curr_abs = np.abs(hg_res_curr)
+        min_hg_res_abs = np.min(hg_res_curr_abs)
+        max_hg_res_abs = np.max(hg_res_curr_abs)
+        mean_hg_res = np.mean(hg_res_curr)
+        mean_hg_res_abs = np.mean(hg_res_curr_abs)
+        sdhg_res = np.std(hg_res_curr)
+        sdhg_res_abs = np.std(hg_res_curr_abs)
 
+        
+        ofpHg_log_res.write('%12d%12d%12.5f%12.5f%12.5f%12.5f%12.5f%12.5f\n' 
+                            %(cid,
+                              nhg,
+                              min_hg_res_abs,
+                              mean_hg_res_abs,
+                              mean_hg_res,
+                              max_hg_res_abs,
+                              sdhg_res,
+                              sdhg_res_abs))
+        
 ofpHg.close()
 ofpHg_log.close()
+ofpHg_log_res.close()

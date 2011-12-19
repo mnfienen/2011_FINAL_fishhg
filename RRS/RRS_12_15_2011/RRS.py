@@ -4,7 +4,7 @@ This code duplicates the sequence outlined in Prep.bat
 
 
 from sorting_gqsort import gqsort_Hgdat, gqsort_Hgdatext
-from forward_NDMMF import calc_Hg
+
 import numpy as np
 import os
 

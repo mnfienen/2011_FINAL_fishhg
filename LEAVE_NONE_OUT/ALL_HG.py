@@ -15,7 +15,7 @@ import time
 # Parameters are estimated with the observation (and any broken connections) left out
 # then, the Hg concentration is calculated with those new, estimated parameters
 # ##
-def LOO_Hg(ID_to_drop,Masterfile,Connectionsfile):
+def ALL_Hg(Masterfile):
     datfile = 'Hgdata.dat'
     srtfile = 'Hgdata.srt'
     extfile = 'Hgdata.datext'
@@ -125,21 +125,7 @@ def LOO_Hg(ID_to_drop,Masterfile,Connectionsfile):
     # call the external C-code Newton-Raphson parameter estimation code
     os.system('./NRparest')    
     
-       
-    
-# ##
-# function to drop an index from the master list.
-# ##
-def drop_ID(ID_to_drop,Connectionsfile):
-    IDs = np.genfromtxt(Connectionsfile,skiprows=1,usecols = (0,),dtype=int)
-    alldat = open(Connectionsfile,'r').readlines()
-    junk =alldat.pop(0)
-    
-    IDoutty = np.nonzero(IDs==ID_to_drop)[0]
-    dropIDs = np.unique(alldat[IDoutty].strip().split()).astype(int)
-    return dropIDs
-  
-    
+
     
     
 
