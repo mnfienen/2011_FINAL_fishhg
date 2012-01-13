@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 mpl.rcParams['pdf.fonttype'] = 42
 
-infile = 'NatfishFinalAllobs_20111116_BABY_SUMMARY'
+infile = 'NatfishFinalAllobs_20111116_BABY_SUMMARY.csv'
 
 indat = np.genfromtxt(infile,dtype=None,names=True)
 plt.figure()

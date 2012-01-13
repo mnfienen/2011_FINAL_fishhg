@@ -16,7 +16,7 @@ for line in indat:
     ofp.write(outline)
     tmp = outline.split(',')
     SpC_EVENT.append(tmp[6] + '_' + tmp[7])
-    ofp.write(SpC_EVENT[-1] + '\n')
+    ofp.write(',' + SpC_EVENT[-1] + '\n')
 ofp.close()
 
 # now count up the number of occurrences in each SpC_EVENT
