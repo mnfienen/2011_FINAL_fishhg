@@ -253,7 +253,7 @@ guimgr.overall-gui-state = {'windowing-policy': 'combined-window',
           'selection_end': 1418,
           'selection_start': 1418},
          1323986891.5124321],
-        [loc('unknown:<untitled> #2'),
+        [loc('unknown:<untitled> #3'),
          {'attrib-starts': [],
           'first-line': 0,
           'folded-linenos': [],
@@ -368,8 +368,8 @@ guimgr.overall-gui-state = {'windowing-policy': 'combined-window',
                  'user_data': {}},
         'window-alloc': (0,
                          0,
-                         1440,
-                         856)}]}
+                         952,
+                         861)}]}
 guimgr.recent-documents = [loc('postproc/consolidate_RRS_results.py')]
 guimgr.visual-state = {loc('../../../../../../../../Library/Frameworks/Python.framework/Versions/7.1/lib/python2.7/site-packages/numpy/lib/_datasource.py'): {''\
         'attrib-starts': [('DataSource',

@@ -117,7 +117,7 @@
 #define  SIZEEVENTARRAY   20000
 #define  SIZESPCARRAY       800
 #define  NUMPARAMS        20000
-#define  MAXITERS          2500
+#define  MAXITERS         25000
 
 
 /*******************************************************************************
