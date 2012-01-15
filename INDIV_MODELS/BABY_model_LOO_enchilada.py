@@ -1,14 +1,12 @@
 import numpy as np
 from forward_NDMMF import calc_Hg
 import os
+from scipy.stats import linregress as lm
+
 ols_infile = 'NatfishFinalAllobs_20111116_BABY_MODEL_trimmed_validation_REGRESSIONS.dat'
 alldat_infile= 'NatfishFinalAllobs_20111116_BABY_MODEL_trimmed_validation.csv'
 main_output_file = 'LOO_Baby_Model.dat'
-class linreg_pars:
-    def __init__(self,spc,event,sigma):
-        self.spc=spc
-        self.event=event
-        self.sigma=sigma  
+
 class all_data:
     def __init__(self,SpC,Event,length,Hg,DL,Wt,ID):
         self.SpC = SpC
@@ -21,16 +19,12 @@ class all_data:
         
 # get the staring parameters that were generated using scipy.linregress
 ols_in = np.genfromtxt(ols_infile,names=True,dtype=None)
-allpars= []
 allSpC_EVENT_indies = []
 for i,cspcevent in enumerate(ols_in['SpC_EVENT']):
     if ols_in['r_squared'][i] > 0.0:
-        allpars.append(linreg_pars(ols_in['SpC_par'][i],ols_in['Event_par'][i],ols_in['sigma'][i]))
         allSpC_EVENT_indies.append(cspcevent)
 
 
-ols_pars = dict(zip(allSpC_EVENT_indies,allpars))
-del ols_in, allpars
 
 alldat = np.genfromtxt(alldat_infile,delimiter = ',',dtype = None,names = True)
 
@@ -68,7 +62,21 @@ allobs = dict(zip(allSpC_EVENT_indies,allobs))
 
 # open the output file, write the header, then close it back down
 ofp = open(main_output_file,'w')
-ofp.write('%17s'*7 %('ID','Hg_obs','Hg_LOO','sigma','max_log_like','num_iters','best_iter') + '\n')
+ofp.write('%17s'*15 %('ID',
+                     'SpC',
+                     'Event',
+                     'Hg_obs',
+                     'Hg_LOO',
+                     'sigma',
+                     'max_log_like',
+                     'num_iters',
+                     'best_iter',
+                     'lmSpC',
+                     'lmEvent',
+                     'stderrlm',
+                     'NDMMF_SpC',
+                     'NDMMF_Event',
+                     'N') + '\n')
 ofp.close()
 
 k = 0
@@ -84,9 +92,12 @@ for i,cID in enumerate(alldat['ID']):
     dat_ofp = open('Hgdata.srt','w')
     numdat = 0
     
-    if cID in allobs[cspcevent].ID:
+    try:
+        cID in allobs[cspcevent].ID
         cDL = 0 # keep track of how many NDs there are
         len_LOO = 0
+        ccallengths = []
+        ccalHgs = []
         for j,IDS in enumerate(allobs[cspcevent].ID):
             if IDS != cID:
                 numdat+=1
@@ -99,21 +110,30 @@ for i,cID in enumerate(alldat['ID']):
                                                        allobs[cspcevent].ID[j]) + '\n')
                 len_LOO += 1
                 cDL += allobs[cspcevent].DL[j]
+                ccallengths.append(allobs[cspcevent].length[j])
+                ccalHgs.append(allobs[cspcevent].Hg[j])
             else:
                 cHg_obs = allobs[cspcevent].Hg[j]
                 clen = allobs[cspcevent].length[j]
         dat_ofp.close()
+        # perform a linear regression to obtain initial parameters
+        x = np.array(ccallengths)
+        x = np.log(x+1.0)
+        y = np.array(ccalHgs)
+        y = np.log((y*1000.0)+1)
+        cspclm, ceventlm, r_value, p_value, cstderrlm = lm(x,y)
+        sigma_calc = np.std(y)
         # ## sigma value, using STD of Hg
         sig_ofp = open('Hgsigma.dat','w')
-        sig_ofp.write('%f\n' %(ols_pars[cspcevent].sigma))
+        sig_ofp.write('%f\n' %(sigma_calc))
         sig_ofp.close()
         # ## SpC parameter value
         spc_ofp = open('Hgspc.srt','w')
-        spc_ofp.write('%d %f\n' %(allobs[cspcevent].SpC,ols_pars[cspcevent].spc))
+        spc_ofp.write('%d %f\n' %(allobs[cspcevent].SpC,cspclm))
         spc_ofp.close()
         # ## Event parameter value
         event_ofp = open('Hgevents.srt','w')
-        event_ofp.write('%d %f\n' %(allobs[cspcevent].Event,ols_pars[cspcevent].event))
+        event_ofp.write('%d %f\n' %(allobs[cspcevent].Event,ceventlm))
         event_ofp.close()
         # ## Write the index file
         ndx_ofp = open('Hgdata.ndx','w')
@@ -123,7 +143,7 @@ for i,cID in enumerate(alldat['ID']):
     
         if (len_LOO - cDL > 1):
             # call the external C-code Newton-Raphson parameter estimation code
-            os.system('./NRparest')    
+            os.system('./NRparest > nul')    
             
             # finally, read in the results and make the Hg prediction for the left-out value
             # SpC parameters
@@ -140,11 +160,21 @@ for i,cID in enumerate(alldat['ID']):
             tmp = set1[1].strip().split()
             # tmp is [max_sig  max_loglike  total_iters best_iteration]
             ofp = open(main_output_file,'a')
-            ofp.write('%17d%17.8e%17.8e%17.8e%17.8e%17d%17d' %(cID,
+            ofp.write('%17d%17d%17d%17.8e%17.8e%17.8e%17.8e%17d%17d%17.8e%17.8e%17.8e%17.8e%17.8e%17d' %(cID,
+                                                       allobs[cspcevent].SpC,
+                                                       allobs[cspcevent].Event,
                                                        cHg_obs,
                                                        cHg,
                                                        float(tmp[0]),
                                                        float(tmp[1]),
                                                        float(tmp[2]),
-                                                       float(tmp[3])) + '\n')
+                                                       float(tmp[3]),
+                                                       cspclm,
+                                                       ceventlm,
+                                                       sigma_calc,
+                                                       SpCpars[1],
+                                                       Eventpars[1],
+                                                       len(y)) + '\n')
             ofp.close()
+    except KeyError:
+        continue
