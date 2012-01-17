@@ -62,7 +62,7 @@ allobs = dict(zip(allSpC_EVENT_indies,allobs))
 
 # open the output file, write the header, then close it back down
 ofp = open(main_output_file,'w')
-ofp.write('%17s'*15 %('ID',
+ofp.write('%8s%8s%8s%17s%17s%17s%17s%10s%10s%17s%17s%17s%17s%17s%6s%6s' %('ID',
                      'SpC',
                      'Event',
                      'Hg_obs',
@@ -76,7 +76,8 @@ ofp.write('%17s'*15 %('ID',
                      'stderrlm',
                      'NDMMF_SpC',
                      'NDMMF_Event',
-                     'N') + '\n')
+                     'N',
+                     'N_ND') + '\n')
 ofp.close()
 
 k = 0
@@ -141,7 +142,7 @@ for i,cID in enumerate(alldat['ID']):
             ndx_ofp.write('%d\n' % (i+1))
         ndx_ofp.close()
     
-        if (len_LOO - cDL > 1):
+        if ((len_LOO - cDL) > 1):
             # call the external C-code Newton-Raphson parameter estimation code
             os.system('./NRparest > nul')    
             
@@ -160,7 +161,7 @@ for i,cID in enumerate(alldat['ID']):
             tmp = set1[1].strip().split()
             # tmp is [max_sig  max_loglike  total_iters best_iteration]
             ofp = open(main_output_file,'a')
-            ofp.write('%17d%17d%17d%17.8e%17.8e%17.8e%17.8e%17d%17d%17.8e%17.8e%17.8e%17.8e%17.8e%17d' %(cID,
+            ofp.write('%8d%8d%8d%17.8e%17.8e%17.8e%17.8e%10d%10d%17.8e%17.8e%17.8e%17.8e%17.8e%6d%6d' %(cID,
                                                        allobs[cspcevent].SpC,
                                                        allobs[cspcevent].Event,
                                                        cHg_obs,
@@ -174,7 +175,8 @@ for i,cID in enumerate(alldat['ID']):
                                                        sigma_calc,
                                                        SpCpars[1],
                                                        Eventpars[1],
-                                                       len(y)) + '\n')
+                                                       len(y),
+                                                       cDL) + '\n')
             ofp.close()
     except KeyError:
         continue
