@@ -122,61 +122,65 @@ for i,cID in enumerate(alldat['ID']):
         x = np.log(x+1.0)
         y = np.array(ccalHgs)
         y = np.log((y*1000.0)+1)
-        cspclm, ceventlm, r_value, p_value, cstderrlm = lm(x,y)
-        sigma_calc = np.std(y)
-        # ## sigma value, using STD of Hg
-        sig_ofp = open('Hgsigma.dat','w')
-        sig_ofp.write('%f\n' %(sigma_calc))
-        sig_ofp.close()
-        # ## SpC parameter value
-        spc_ofp = open('Hgspc.srt','w')
-        spc_ofp.write('%d %f\n' %(allobs[cspcevent].SpC,cspclm))
-        spc_ofp.close()
-        # ## Event parameter value
-        event_ofp = open('Hgevents.srt','w')
-        event_ofp.write('%d %f\n' %(allobs[cspcevent].Event,ceventlm))
-        event_ofp.close()
-        # ## Write the index file
-        ndx_ofp = open('Hgdata.ndx','w')
-        for i in np.arange(numdat):
-            ndx_ofp.write('%d\n' % (i+1))
-        ndx_ofp.close()
-    
-        if ((len_LOO - cDL) > 1):
-            # call the external C-code Newton-Raphson parameter estimation code
-            os.system('./NRparest > nul')    
+        # check to be sure of uniqueness in both length and Hg
+        if ((len(x) - len(np.unique((x)))) >= 1):
+            if ((len(y) - len(np.unique((y)))) >= 1):
             
-            # finally, read in the results and make the Hg prediction for the left-out value
-            # SpC parameters
-            SpCpars = np.loadtxt('BestSPs')
-            # Event parameters
-            Eventpars = np.loadtxt('BestEPs')
+                cspclm, ceventlm, r_value, p_value, cstderrlm = lm(x,y)
+                sigma_calc = np.std(y)
+                # ## sigma value, using STD of Hg
+                sig_ofp = open('Hgsigma.dat','w')
+                sig_ofp.write('%f\n' %(sigma_calc))
+                sig_ofp.close()
+                # ## SpC parameter value
+                spc_ofp = open('Hgspc.srt','w')
+                spc_ofp.write('%d %f\n' %(allobs[cspcevent].SpC,cspclm))
+                spc_ofp.close()
+                # ## Event parameter value
+                event_ofp = open('Hgevents.srt','w')
+                event_ofp.write('%d %f\n' %(allobs[cspcevent].Event,ceventlm))
+                event_ofp.close()
+                # ## Write the index file
+                ndx_ofp = open('Hgdata.ndx','w')
+                for i in np.arange(numdat):
+                    ndx_ofp.write('%d\n' % (i+1))
+                ndx_ofp.close()
             
-            # calculate mercury for this index
-            cHg = calc_Hg(SpCpars[1],Eventpars[1],clen)
-            cHg = (np.exp(cHg)-1)/1000.0
-            
-            # read in sigma from the summary data file
-            set1 = open('summaryRESULTS.dat','r').readlines()
-            tmp = set1[1].strip().split()
-            # tmp is [max_sig  max_loglike  total_iters best_iteration]
-            ofp = open(main_output_file,'a')
-            ofp.write('%8d%8d%8d%17.8e%17.8e%17.8e%17.8e%10d%10d%17.8e%17.8e%17.8e%17.8e%17.8e%6d%6d' %(cID,
-                                                       allobs[cspcevent].SpC,
-                                                       allobs[cspcevent].Event,
-                                                       cHg_obs,
-                                                       cHg,
-                                                       float(tmp[0]),
-                                                       float(tmp[1]),
-                                                       float(tmp[2]),
-                                                       float(tmp[3]),
-                                                       cspclm,
-                                                       ceventlm,
-                                                       sigma_calc,
-                                                       SpCpars[1],
-                                                       Eventpars[1],
-                                                       len(y),
-                                                       cDL) + '\n')
-            ofp.close()
+                if ((len_LOO - cDL) > 1):
+                    # call the external C-code Newton-Raphson parameter estimation code
+                    os.system('./NRparest > nul')    
+                    
+                    # finally, read in the results and make the Hg prediction for the left-out value
+                    # SpC parameters
+                    SpCpars = np.loadtxt('BestSPs')
+                    # Event parameters
+                    Eventpars = np.loadtxt('BestEPs')
+                    
+                    # calculate mercury for this index
+                    cHg = calc_Hg(SpCpars[1],Eventpars[1],clen)
+                    cHg = (np.exp(cHg)-1)/1000.0
+                    
+                    # read in sigma from the summary data file
+                    set1 = open('summaryRESULTS.dat','r').readlines()
+                    tmp = set1[1].strip().split()
+                    # tmp is [max_sig  max_loglike  total_iters best_iteration]
+                    ofp = open(main_output_file,'a')
+                    ofp.write('%8d%8d%8d%17.8e%17.8e%17.8e%17.8e%10d%10d%17.8e%17.8e%17.8e%17.8e%17.8e%6d%6d' %(cID,
+                                                               allobs[cspcevent].SpC,
+                                                               allobs[cspcevent].Event,
+                                                               cHg_obs,
+                                                               cHg,
+                                                               float(tmp[0]),
+                                                               float(tmp[1]),
+                                                               float(tmp[2]),
+                                                               float(tmp[3]),
+                                                               cspclm,
+                                                               ceventlm,
+                                                               sigma_calc,
+                                                               SpCpars[1],
+                                                               Eventpars[1],
+                                                               len(y),
+                                                               cDL) + '\n')
+                    ofp.close()
     except KeyError:
         continue
