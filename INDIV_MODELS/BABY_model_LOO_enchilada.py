@@ -6,6 +6,7 @@ from scipy.stats import linregress as lm
 ols_infile = 'NatfishFinalAllobs_20111116_BABY_MODEL_trimmed_validation_REGRESSIONS.dat'
 alldat_infile= 'NatfishFinalAllobs_20111116_BABY_MODEL_trimmed_validation.csv'
 main_output_file = 'LOO_Baby_Model.dat'
+not_included_file = 'LOO_Baby_Left_Out.dat'
 
 class all_data:
     def __init__(self,SpC,Event,length,Hg,DL,Wt,ID):
@@ -54,7 +55,9 @@ for i,cspcevent in enumerate(allSpC_EVENT_indies):
                            alldat['Wt'][currinds],
                            alldat['ID'][currinds]))
     
-    
+
+ofp_skipped = open(not_included_file,'w',0)
+
 allobs = dict(zip(allSpC_EVENT_indies,allobs))
 # ########## start LOO ########## #
 # now perform leave one out analaysis
@@ -82,6 +85,8 @@ ofp.close()
 
 k = 0
 ll = len(alldat)
+ofp_skipped.write('%d total samples to start\n' %(len(alldat)))
+
 for i,cID in enumerate(alldat['ID']):
     # here cID is the left-out ID code
     k+=1
@@ -121,10 +126,10 @@ for i,cID in enumerate(alldat['ID']):
         x = np.array(ccallengths)
         x = np.log(x+1.0)
         y = np.array(ccalHgs)
-        y = np.log((y*1000.0)+1)
+        y = np.log((y*1000.0)+1.0)
         # check to be sure of uniqueness in both length and Hg
-        if ((len(x) - len(np.unique((x)))) >= 1):
-            if ((len(y) - len(np.unique((y)))) >= 1):
+        if (len(np.unique((x))) >= 1):
+            if (len(np.unique((y))) >= 1):
             
                 cspclm, ceventlm, r_value, p_value, cstderrlm = lm(x,y)
                 sigma_calc = np.std(y)
@@ -146,7 +151,7 @@ for i,cID in enumerate(alldat['ID']):
                     ndx_ofp.write('%d\n' % (i+1))
                 ndx_ofp.close()
             
-                if ((len_LOO - cDL) > 1):
+                if ((len_LOO - cDL) >= 1):
                     # call the external C-code Newton-Raphson parameter estimation code
                     os.system('./NRparest > nul')    
                     
@@ -182,5 +187,11 @@ for i,cID in enumerate(alldat['ID']):
                                                                len(y),
                                                                cDL) + '\n')
                     ofp.close()
+                else:
+                    ofp_skipped.write('%7d too many NDs\n' %(cID))
+            else:
+                ofp_skipped.write('%7d repeated Hgs\n' %(cID))
+        else:
+            ofp_skipped.write('%7d repeated lengths\n' %(cID))  
     except KeyError:
-        continue
+        ofp_skipped.write('%7d did not pass prescreen\n' %(cID))
