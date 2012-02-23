@@ -11,7 +11,7 @@ allHgobs = indat['Hg_obs']
 allDL = indat['DL']
 
 inlines = open(infile,'r').readlines()
-header = inlines.pop(0).strip() + ' Hg_corrected\n'
+header = inlines.pop(0).strip() + ' Hg_obs_corrected Hg_mod_baby\n'
 
 ofp = open(infile + 'corr.dat','w')
 ofp.write(header)
@@ -23,6 +23,6 @@ for i,cline in enumerate(inlines):
     if allDL[i] == 1:
         HgCorr,junkus = Inverse_Mills_Ratio_Correction(allHgobs[i],allsigma[i],allHgmod[i])
     else:
-        HgCorr = allHgmod[i]
-    ofp.write(cline.strip() + ' %f\n' %(HgCorr))
+        HgCorr = allHgobs[i]
+    ofp.write(cline.strip() + ' %f %f \n' %(HgCorr, allHgmod[i]))
 ofp.close()
