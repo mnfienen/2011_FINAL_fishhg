@@ -125,7 +125,7 @@ class LOO_post:
         hajime = True
         cplot= 0
         # make the figure panel
-        cfig,ax = plt.subplots(nrows,ncols,figsize=(w,h)) 
+        cfig = plt.figure(figsize=(w,h)) 
         plt.subplots_adjust(wspace=0,hspace=0)
         for cs in eunich:
             i+=1
@@ -145,7 +145,8 @@ class LOO_post:
                 figname = figname.replace(":","")
                 figname = figname.replace('/','_')
                 if cplot == totsubplots:
-                    resid_plotter(cfig,ax[crow,currcol],
+                    cax = plt.gcf().add_subplot(nrows,ncols,cplot)
+                    resid_plotter(cfig,cax,
                                   self.Hgmod[inds],
                                   self.Hgobs[inds],
                                   self.DL[inds],
@@ -157,15 +158,17 @@ class LOO_post:
                                   currcol,
                                   nrows)                    
                     bigfig += 1
-                    plt.savefig( subf + '/one2one_plots_%d.pdf' %(bigfig))
-                    cfig,ax = plt.subplots(nrows,ncols,figsize=(w,h)) 
                     plt.subplots_adjust(wspace=0,hspace=0)
+                    plt.savefig( subf + '/one2one_plots_%d.pdf' %(bigfig))
+                    cfig = plt.figure(figsize=(w,h)) 
+                    
                     hajime=True
                     crow=0
                     ccol=-1
                     cplot = 0
                 else:
-                    resid_plotter(cfig,ax[crow,currcol],
+                    cax = plt.gcf().add_subplot(nrows,ncols,cplot)
+                    resid_plotter(cfig,cax,
                                   self.Hgmod[inds],
                                   self.Hgobs[inds],
                                   self.DL[inds],
@@ -179,3 +182,5 @@ class LOO_post:
                 logfile.write('%s.pdf:%d of %d -->  %d samples included\n' %(figname,i,len(eunich),len(inds)))
             else:
                 logfile.write('   NOT PRINTED: %d of %d --> %s: N = %d samples --> N < cutoff\n' %(i,len(eunich),cs,len(inds)))
+        plt.subplots_adjust(wspace=0,hspace=0)
+        plt.savefig( subf + '/one2one_plots_%d.pdf' %(bigfig))
