@@ -36,7 +36,7 @@ for i in DLinds:
     Hgobs_corr[i] = x
 
 ofp = open('AllHg_reference.dat','w')
-ofp.write('%12s%12s%12s%12s%12s\n' %('ID','DL','Hgmod','Hgobs','Hgobscorr'))
+ofp.write('%s,%s,%s,%s,%s\n' %('ID','DL','Hgmod','Hgobs','Hgobscorr'))
 for i,CID in enumerate(ID):
-    ofp.write('%12d%12d%12f%12f%12f\n' %(CID,DL[i],Hgmod[i],Hgobs[i],Hgobs_corr[i]))
+    ofp.write('%d,%d,%f,%f,%f\n' %(CID,DL[i],Hgmod[i],Hgobs[i],Hgobs_corr[i]))
 ofp.close()

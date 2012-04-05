@@ -1,0 +1,695 @@
+Postprocessing of LOO analysis for species-cut combos
+
+
+
+############
+#Running SpC with cutoff of 30
+############
+Figures in folder --> figures/species_cut/
+   NOT PRINTED: 1 of 488 --> 1: N = 3 samples --> N < cutoff
+Yellowfin_Goby
+Whole.pdf:2 of 488 -->  61 samples included
+   NOT PRINTED: 3 of 488 --> 4: N = 2 samples --> N < cutoff
+   NOT PRINTED: 4 of 488 --> 5: N = 12 samples --> N < cutoff
+   NOT PRINTED: 5 of 488 --> 6: N = 2 samples --> N < cutoff
+   NOT PRINTED: 6 of 488 --> 7: N = 3 samples --> N < cutoff
+   NOT PRINTED: 7 of 488 --> 8: N = 16 samples --> N < cutoff
+   NOT PRINTED: 8 of 488 --> 9: N = 13 samples --> N < cutoff
+   NOT PRINTED: 9 of 488 --> 12: N = 3 samples --> N < cutoff
+   NOT PRINTED: 10 of 488 --> 13: N = 3 samples --> N < cutoff
+Alewife
+Whole.pdf:11 of 488 -->  32 samples included
+   NOT PRINTED: 12 of 488 --> 16: N = 9 samples --> N < cutoff
+Rock_Bass
+Skin-off_Fillet.pdf:13 of 488 -->  111 samples included
+Rock_Bass
+Skin-on_Fillet.pdf:14 of 488 -->  824 samples included
+Rock_Bass
+Whole.pdf:15 of 488 -->  103 samples included
+   NOT PRINTED: 16 of 488 --> 23: N = 12 samples --> N < cutoff
+   NOT PRINTED: 17 of 488 --> 25: N = 5 samples --> N < cutoff
+   NOT PRINTED: 18 of 488 --> 26: N = 4 samples --> N < cutoff
+White_Catfish
+Skin-off_Fillet.pdf:19 of 488 -->  252 samples included
+White_Catfish
+Skin-on_Fillet.pdf:20 of 488 -->  48 samples included
+White_Catfish
+Whole.pdf:21 of 488 -->  59 samples included
+Black_Bullhead
+Skin-off_Fillet.pdf:22 of 488 -->  186 samples included
+   NOT PRINTED: 23 of 488 --> 31: N = 9 samples --> N < cutoff
+Black_Bullhead
+Whole.pdf:24 of 488 -->  159 samples included
+   NOT PRINTED: 25 of 488 --> 33: N = 7 samples --> N < cutoff
+Yellow_Bullhead
+Skin-off_Fillet.pdf:26 of 488 -->  220 samples included
+Yellow_Bullhead
+Skin-on_Fillet.pdf:27 of 488 -->  72 samples included
+Yellow_Bullhead
+Whole.pdf:28 of 488 -->  99 samples included
+   NOT PRINTED: 29 of 488 --> 37: N = 16 samples --> N < cutoff
+   NOT PRINTED: 30 of 488 --> 38: N = 16 samples --> N < cutoff
+Brown_Bullhead
+Skin-off_Fillet.pdf:31 of 488 -->  201 samples included
+Brown_Bullhead
+Skin-on_Fillet.pdf:32 of 488 -->  161 samples included
+Brown_Bullhead
+Whole.pdf:33 of 488 -->  158 samples included
+   NOT PRINTED: 34 of 488 --> 42: N = 16 samples --> N < cutoff
+   NOT PRINTED: 35 of 488 --> 43: N = 7 samples --> N < cutoff
+   NOT PRINTED: 36 of 488 --> 44: N = 13 samples --> N < cutoff
+   NOT PRINTED: 37 of 488 --> 45: N = 9 samples --> N < cutoff
+Bowfin
+Skin-off_Fillet.pdf:38 of 488 -->  1100 samples included
+Bowfin
+Skin-on_Fillet.pdf:39 of 488 -->  2373 samples included
+Bowfin
+Whole.pdf:40 of 488 -->  47 samples included
+   NOT PRINTED: 41 of 488 --> 49: N = 23 samples --> N < cutoff
+   NOT PRINTED: 42 of 488 --> 50: N = 3 samples --> N < cutoff
+   NOT PRINTED: 43 of 488 --> 51: N = 2 samples --> N < cutoff
+   NOT PRINTED: 44 of 488 --> 52: N = 5 samples --> N < cutoff
+American_Eel
+Skin-off_Fillet.pdf:45 of 488 -->  70 samples included
+American_Eel
+Skin-on_Fillet.pdf:46 of 488 -->  52 samples included
+   NOT PRINTED: 47 of 488 --> 55: N = 26 samples --> N < cutoff
+   NOT PRINTED: 48 of 488 --> 56: N = 2 samples --> N < cutoff
+Freshwater_Drum
+Skin-off_Fillet.pdf:49 of 488 -->  1112 samples included
+Freshwater_Drum
+Skin-on_Fillet.pdf:50 of 488 -->  282 samples included
+Freshwater_Drum
+Whole.pdf:51 of 488 -->  58 samples included
+Sheepshead_Seabream
+Skin-off_Fillet.pdf:52 of 488 -->  51 samples included
+   NOT PRINTED: 53 of 488 --> 62: N = 15 samples --> N < cutoff
+   NOT PRINTED: 54 of 488 --> 64: N = 7 samples --> N < cutoff
+   NOT PRINTED: 55 of 488 --> 65: N = 25 samples --> N < cutoff
+   NOT PRINTED: 56 of 488 --> 66: N = 2 samples --> N < cutoff
+   NOT PRINTED: 57 of 488 --> 67: N = 13 samples --> N < cutoff
+   NOT PRINTED: 58 of 488 --> 68: N = 2 samples --> N < cutoff
+   NOT PRINTED: 59 of 488 --> 69: N = 4 samples --> N < cutoff
+   NOT PRINTED: 60 of 488 --> 70: N = 2 samples --> N < cutoff
+   NOT PRINTED: 61 of 488 --> 71: N = 5 samples --> N < cutoff
+   NOT PRINTED: 62 of 488 --> 72: N = 7 samples --> N < cutoff
+Blue_Crab
+Edible.pdf:63 of 488 -->  56 samples included
+Blue_Crab
+Whole.pdf:64 of 488 -->  97 samples included
+   NOT PRINTED: 65 of 488 --> 75: N = 13 samples --> N < cutoff
+   NOT PRINTED: 66 of 488 --> 76: N = 19 samples --> N < cutoff
+   NOT PRINTED: 67 of 488 --> 77: N = 2 samples --> N < cutoff
+   NOT PRINTED: 68 of 488 --> 78: N = 2 samples --> N < cutoff
+   NOT PRINTED: 69 of 488 --> 79: N = 2 samples --> N < cutoff
+   NOT PRINTED: 70 of 488 --> 80: N = 2 samples --> N < cutoff
+   NOT PRINTED: 71 of 488 --> 82: N = 3 samples --> N < cutoff
+   NOT PRINTED: 72 of 488 --> 83: N = 13 samples --> N < cutoff
+Goldfish
+Whole.pdf:73 of 488 -->  31 samples included
+   NOT PRINTED: 74 of 488 --> 85: N = 2 samples --> N < cutoff
+   NOT PRINTED: 75 of 488 --> 86: N = 19 samples --> N < cutoff
+   NOT PRINTED: 76 of 488 --> 87: N = 25 samples --> N < cutoff
+River_Carpsucker
+Whole.pdf:77 of 488 -->  87 samples included
+   NOT PRINTED: 78 of 488 --> 89: N = 15 samples --> N < cutoff
+Quillback
+Skin-on_Fillet.pdf:79 of 488 -->  44 samples included
+   NOT PRINTED: 80 of 488 --> 91: N = 22 samples --> N < cutoff
+   NOT PRINTED: 81 of 488 --> 93: N = 27 samples --> N < cutoff
+   NOT PRINTED: 82 of 488 --> 95: N = 10 samples --> N < cutoff
+   NOT PRINTED: 83 of 488 --> 96: N = 12 samples --> N < cutoff
+   NOT PRINTED: 84 of 488 --> 97: N = 18 samples --> N < cutoff
+Longnose_Sucker
+Whole.pdf:85 of 488 -->  124 samples included
+Desert_Sucker
+Whole.pdf:86 of 488 -->  52 samples included
+   NOT PRINTED: 87 of 488 --> 100: N = 10 samples --> N < cutoff
+   NOT PRINTED: 88 of 488 --> 101: N = 10 samples --> N < cutoff
+   NOT PRINTED: 89 of 488 --> 102: N = 13 samples --> N < cutoff
+   NOT PRINTED: 90 of 488 --> 103: N = 10 samples --> N < cutoff
+White_Sucker
+Skin-off_Fillet.pdf:91 of 488 -->  389 samples included
+White_Sucker
+Skin-on_Fillet.pdf:92 of 488 -->  1248 samples included
+White_Sucker
+Whole.pdf:93 of 488 -->  844 samples included
+   NOT PRINTED: 94 of 488 --> 107: N = 2 samples --> N < cutoff
+   NOT PRINTED: 95 of 488 --> 108: N = 18 samples --> N < cutoff
+   NOT PRINTED: 96 of 488 --> 109: N = 24 samples --> N < cutoff
+   NOT PRINTED: 97 of 488 --> 110: N = 21 samples --> N < cutoff
+Flannelmouth_Sucker
+Whole.pdf:98 of 488 -->  88 samples included
+   NOT PRINTED: 99 of 488 --> 112: N = 5 samples --> N < cutoff
+Largescale_Sucker
+Whole.pdf:100 of 488 -->  275 samples included
+   NOT PRINTED: 101 of 488 --> 114: N = 19 samples --> N < cutoff
+Sacramento_Sucker
+Skin-on_Fillet.pdf:102 of 488 -->  81 samples included
+Sacramento_Sucker
+Whole.pdf:103 of 488 -->  45 samples included
+   NOT PRINTED: 104 of 488 --> 117: N = 27 samples --> N < cutoff
+   NOT PRINTED: 105 of 488 --> 118: N = 23 samples --> N < cutoff
+   NOT PRINTED: 106 of 488 --> 119: N = 9 samples --> N < cutoff
+   NOT PRINTED: 107 of 488 --> 120: N = 10 samples --> N < cutoff
+   NOT PRINTED: 108 of 488 --> 121: N = 24 samples --> N < cutoff
+   NOT PRINTED: 109 of 488 --> 122: N = 11 samples --> N < cutoff
+   NOT PRINTED: 110 of 488 --> 123: N = 30 samples --> N < cutoff
+   NOT PRINTED: 111 of 488 --> 124: N = 11 samples --> N < cutoff
+   NOT PRINTED: 112 of 488 --> 127: N = 1 samples --> N < cutoff
+   NOT PRINTED: 113 of 488 --> 128: N = 14 samples --> N < cutoff
+   NOT PRINTED: 114 of 488 --> 131: N = 2 samples --> N < cutoff
+Cisco
+Skin-off_Fillet.pdf:115 of 488 -->  39 samples included
+Cisco
+Skin-on_Fillet.pdf:116 of 488 -->  146 samples included
+   NOT PRINTED: 117 of 488 --> 135: N = 8 samples --> N < cutoff
+   NOT PRINTED: 118 of 488 --> 136: N = 3 samples --> N < cutoff
+Lake_Whitefish
+Skin-on_Fillet.pdf:119 of 488 -->  236 samples included
+   NOT PRINTED: 120 of 488 --> 138: N = 25 samples --> N < cutoff
+   NOT PRINTED: 121 of 488 --> 139: N = 4 samples --> N < cutoff
+Bloater
+Whole.pdf:122 of 488 -->  65 samples included
+   NOT PRINTED: 123 of 488 --> 141: N = 2 samples --> N < cutoff
+Cottus_Bairdii___C._Beldingi
+No_head_or_visc.pdf:124 of 488 -->  37 samples included
+   NOT PRINTED: 125 of 488 --> 143: N = 28 samples --> N < cutoff
+Mottled_Sculpin
+No_head_or_visc.pdf:126 of 488 -->  48 samples included
+   NOT PRINTED: 127 of 488 --> 145: N = 20 samples --> N < cutoff
+   NOT PRINTED: 128 of 488 --> 146: N = 3 samples --> N < cutoff
+   NOT PRINTED: 129 of 488 --> 147: N = 4 samples --> N < cutoff
+   NOT PRINTED: 130 of 488 --> 148: N = 10 samples --> N < cutoff
+   NOT PRINTED: 131 of 488 --> 149: N = 10 samples --> N < cutoff
+Reticulate_Sculpin
+No_head_or_visc.pdf:132 of 488 -->  47 samples included
+   NOT PRINTED: 133 of 488 --> 152: N = 2 samples --> N < cutoff
+   NOT PRINTED: 134 of 488 --> 154: N = 20 samples --> N < cutoff
+Shiner_Perch
+Whole.pdf:135 of 488 -->  45 samples included
+Spotted_Weakfish
+Skin-off_Fillet.pdf:136 of 488 -->  112 samples included
+Spotted_Weakfish
+Skin-on_Fillet.pdf:137 of 488 -->  106 samples included
+   NOT PRINTED: 138 of 488 --> 159: N = 9 samples --> N < cutoff
+Red_Shiner
+Whole.pdf:139 of 488 -->  32 samples included
+   NOT PRINTED: 140 of 488 --> 161: N = 3 samples --> N < cutoff
+   NOT PRINTED: 141 of 488 --> 162: N = 12 samples --> N < cutoff
+   NOT PRINTED: 142 of 488 --> 164: N = 2 samples --> N < cutoff
+Common_Carp
+Skin-off_Fillet.pdf:143 of 488 -->  1360 samples included
+Common_Carp
+Skin-on_Fillet.pdf:144 of 488 -->  2110 samples included
+   NOT PRINTED: 145 of 488 --> 167: N = 2 samples --> N < cutoff
+Common_Carp
+Whole.pdf:146 of 488 -->  1836 samples included
+   NOT PRINTED: 147 of 488 --> 169: N = 30 samples --> N < cutoff
+Gizzard_Shad
+Skin-on_Fillet.pdf:148 of 488 -->  141 samples included
+Gizzard_Shad
+Whole.pdf:149 of 488 -->  175 samples included
+Threadfin_Shad
+Whole.pdf:150 of 488 -->  77 samples included
+   NOT PRINTED: 151 of 488 --> 173: N = 3 samples --> N < cutoff
+   NOT PRINTED: 152 of 488 --> 174: N = 10 samples --> N < cutoff
+   NOT PRINTED: 153 of 488 --> 175: N = 2 samples --> N < cutoff
+   NOT PRINTED: 154 of 488 --> 176: N = 4 samples --> N < cutoff
+   NOT PRINTED: 155 of 488 --> 178: N = 21 samples --> N < cutoff
+   NOT PRINTED: 156 of 488 --> 179: N = 29 samples --> N < cutoff
+   NOT PRINTED: 157 of 488 --> 180: N = 3 samples --> N < cutoff
+   NOT PRINTED: 158 of 488 --> 181: N = 5 samples --> N < cutoff
+   NOT PRINTED: 159 of 488 --> 183: N = 19 samples --> N < cutoff
+   NOT PRINTED: 160 of 488 --> 184: N = 13 samples --> N < cutoff
+   NOT PRINTED: 161 of 488 --> 185: N = 4 samples --> N < cutoff
+Northern_Pike
+Skin-off_Fillet.pdf:162 of 488 -->  1214 samples included
+Northern_Pike
+Skin-on_Fillet.pdf:163 of 488 -->  7725 samples included
+Northern_Pike
+Whole.pdf:164 of 488 -->  546 samples included
+   NOT PRINTED: 165 of 488 --> 191: N = 4 samples --> N < cutoff
+   NOT PRINTED: 166 of 488 --> 192: N = 4 samples --> N < cutoff
+Muskellunge
+Skin-on_Fillet.pdf:167 of 488 -->  176 samples included
+Chain_Pickerel
+Skin-off_Fillet.pdf:168 of 488 -->  68 samples included
+Chain_Pickerel
+Skin-on_Fillet.pdf:169 of 488 -->  780 samples included
+Chain_Pickerel
+Whole.pdf:170 of 488 -->  39 samples included
+   NOT PRINTED: 171 of 488 --> 198: N = 5 samples --> N < cutoff
+   NOT PRINTED: 172 of 488 --> 199: N = 2 samples --> N < cutoff
+   NOT PRINTED: 173 of 488 --> 200: N = 12 samples --> N < cutoff
+   NOT PRINTED: 174 of 488 --> 201: N = 5 samples --> N < cutoff
+Mosquitofish
+No_head_or_visc.pdf:175 of 488 -->  58 samples included
+Mosquitofish
+Whole.pdf:176 of 488 -->  118 samples included
+   NOT PRINTED: 177 of 488 --> 204: N = 5 samples --> N < cutoff
+   NOT PRINTED: 178 of 488 --> 205: N = 22 samples --> N < cutoff
+   NOT PRINTED: 179 of 488 --> 206: N = 15 samples --> N < cutoff
+White_Croaker
+Skin-on_Fillet.pdf:180 of 488 -->  44 samples included
+   NOT PRINTED: 181 of 488 --> 208: N = 2 samples --> N < cutoff
+   NOT PRINTED: 182 of 488 --> 209: N = 4 samples --> N < cutoff
+   NOT PRINTED: 183 of 488 --> 210: N = 3 samples --> N < cutoff
+   NOT PRINTED: 184 of 488 --> 211: N = 2 samples --> N < cutoff
+Roundtail_Chub
+Whole.pdf:185 of 488 -->  91 samples included
+   NOT PRINTED: 186 of 488 --> 213: N = 6 samples --> N < cutoff
+California_Roach
+Whole.pdf:187 of 488 -->  121 samples included
+   NOT PRINTED: 188 of 488 --> 215: N = 6 samples --> N < cutoff
+Goldeye
+Whole.pdf:189 of 488 -->  81 samples included
+   NOT PRINTED: 190 of 488 --> 217: N = 2 samples --> N < cutoff
+   NOT PRINTED: 191 of 488 --> 219: N = 3 samples --> N < cutoff
+   NOT PRINTED: 192 of 488 --> 220: N = 15 samples --> N < cutoff
+   NOT PRINTED: 193 of 488 --> 221: N = 17 samples --> N < cutoff
+Northern_Hog_Sucker
+Skin-on_Fillet.pdf:194 of 488 -->  138 samples included
+Northern_Hog_Sucker
+Whole.pdf:195 of 488 -->  39 samples included
+   NOT PRINTED: 196 of 488 --> 224: N = 2 samples --> N < cutoff
+   NOT PRINTED: 197 of 488 --> 226: N = 12 samples --> N < cutoff
+   NOT PRINTED: 198 of 488 --> 227: N = 2 samples --> N < cutoff
+   NOT PRINTED: 199 of 488 --> 230: N = 7 samples --> N < cutoff
+   NOT PRINTED: 200 of 488 --> 231: N = 4 samples --> N < cutoff
+   NOT PRINTED: 201 of 488 --> 232: N = 2 samples --> N < cutoff
+Blue_Catfish
+Skin-off_Fillet.pdf:202 of 488 -->  1274 samples included
+   NOT PRINTED: 203 of 488 --> 234: N = 16 samples --> N < cutoff
+Blue_Catfish
+Whole.pdf:204 of 488 -->  31 samples included
+   NOT PRINTED: 205 of 488 --> 236: N = 2 samples --> N < cutoff
+   NOT PRINTED: 206 of 488 --> 237: N = 5 samples --> N < cutoff
+Channel_Catfish
+Skin-off_Fillet.pdf:207 of 488 -->  3077 samples included
+Channel_Catfish
+Skin-on_Fillet.pdf:208 of 488 -->  179 samples included
+Channel_Catfish
+Whole.pdf:209 of 488 -->  584 samples included
+Smallmouth_Buffalo
+Skin-off_Fillet.pdf:210 of 488 -->  158 samples included
+Smallmouth_Buffalo
+Skin-on_Fillet.pdf:211 of 488 -->  68 samples included
+Smallmouth_Buffalo
+Whole.pdf:212 of 488 -->  75 samples included
+Bigmouth_Buffalo
+Skin-off_Fillet.pdf:213 of 488 -->  215 samples included
+Bigmouth_Buffalo
+Skin-on_Fillet.pdf:214 of 488 -->  62 samples included
+   NOT PRINTED: 215 of 488 --> 246: N = 29 samples --> N < cutoff
+   NOT PRINTED: 216 of 488 --> 248: N = 4 samples --> N < cutoff
+   NOT PRINTED: 217 of 488 --> 249: N = 4 samples --> N < cutoff
+   NOT PRINTED: 218 of 488 --> 250: N = 2 samples --> N < cutoff
+   NOT PRINTED: 219 of 488 --> 251: N = 6 samples --> N < cutoff
+   NOT PRINTED: 220 of 488 --> 252: N = 21 samples --> N < cutoff
+   NOT PRINTED: 221 of 488 --> 253: N = 5 samples --> N < cutoff
+Spot_Croaker
+Skin-on_Fillet.pdf:222 of 488 -->  102 samples included
+   NOT PRINTED: 223 of 488 --> 255: N = 9 samples --> N < cutoff
+   NOT PRINTED: 224 of 488 --> 256: N = 12 samples --> N < cutoff
+   NOT PRINTED: 225 of 488 --> 258: N = 3 samples --> N < cutoff
+   NOT PRINTED: 226 of 488 --> 259: N = 19 samples --> N < cutoff
+Longnose_Gar
+Whole.pdf:227 of 488 -->  69 samples included
+   NOT PRINTED: 228 of 488 --> 262: N = 3 samples --> N < cutoff
+   NOT PRINTED: 229 of 488 --> 263: N = 10 samples --> N < cutoff
+Florida_Gar
+Skin-on_Fillet.pdf:230 of 488 -->  71 samples included
+   NOT PRINTED: 231 of 488 --> 265: N = 8 samples --> N < cutoff
+   NOT PRINTED: 232 of 488 --> 267: N = 11 samples --> N < cutoff
+Redbreast_Sunfish
+Skin-on_Fillet.pdf:233 of 488 -->  702 samples included
+Redbreast_Sunfish
+Whole.pdf:234 of 488 -->  33 samples included
+Green_Sunfish
+Skin-off_Fillet.pdf:235 of 488 -->  44 samples included
+Green_Sunfish
+Skin-on_Fillet.pdf:236 of 488 -->  40 samples included
+Green_Sunfish
+Whole.pdf:237 of 488 -->  132 samples included
+   NOT PRINTED: 238 of 488 --> 273: N = 2 samples --> N < cutoff
+   NOT PRINTED: 239 of 488 --> 274: N = 9 samples --> N < cutoff
+   NOT PRINTED: 240 of 488 --> 275: N = 14 samples --> N < cutoff
+Pumpkinseed
+Skin-on_Fillet.pdf:241 of 488 -->  230 samples included
+Pumpkinseed
+Whole.pdf:242 of 488 -->  76 samples included
+Warmouth
+Skin-off_Fillet.pdf:243 of 488 -->  36 samples included
+Warmouth
+Skin-on_Fillet.pdf:244 of 488 -->  515 samples included
+Warmouth
+Whole.pdf:245 of 488 -->  195 samples included
+   NOT PRINTED: 246 of 488 --> 282: N = 2 samples --> N < cutoff
+   NOT PRINTED: 247 of 488 --> 284: N = 19 samples --> N < cutoff
+Bluegill
+Skin-off_Fillet.pdf:248 of 488 -->  356 samples included
+Bluegill
+Skin-on_Fillet.pdf:249 of 488 -->  2834 samples included
+Bluegill
+Whole.pdf:250 of 488 -->  911 samples included
+   NOT PRINTED: 251 of 488 --> 288: N = 3 samples --> N < cutoff
+Longear_Sunfish
+Skin-on_Fillet.pdf:252 of 488 -->  42 samples included
+Longear_Sunfish
+Whole.pdf:253 of 488 -->  94 samples included
+Redear_Sunfish
+Skin-off_Fillet.pdf:254 of 488 -->  204 samples included
+Redear_Sunfish
+Skin-on_Fillet.pdf:255 of 488 -->  2081 samples included
+Redear_Sunfish
+Whole.pdf:256 of 488 -->  427 samples included
+   NOT PRINTED: 257 of 488 --> 294: N = 30 samples --> N < cutoff
+Spotted_Sunfish
+Whole.pdf:258 of 488 -->  206 samples included
+   NOT PRINTED: 259 of 488 --> 296: N = 19 samples --> N < cutoff
+Burbot
+Skin-off_Fillet.pdf:260 of 488 -->  37 samples included
+   NOT PRINTED: 261 of 488 --> 298: N = 26 samples --> N < cutoff
+   NOT PRINTED: 262 of 488 --> 299: N = 18 samples --> N < cutoff
+Northern_Red_Snapper
+Skin-off_Fillet.pdf:263 of 488 -->  37 samples included
+   NOT PRINTED: 264 of 488 --> 302: N = 9 samples --> N < cutoff
+   NOT PRINTED: 265 of 488 --> 303: N = 15 samples --> N < cutoff
+   NOT PRINTED: 266 of 488 --> 304: N = 2 samples --> N < cutoff
+Inland_Silverside
+Whole.pdf:267 of 488 -->  559 samples included
+   NOT PRINTED: 268 of 488 --> 306: N = 3 samples --> N < cutoff
+   NOT PRINTED: 269 of 488 --> 307: N = 8 samples --> N < cutoff
+   NOT PRINTED: 270 of 488 --> 308: N = 10 samples --> N < cutoff
+Atlantic_Croaker
+Skin-on_Fillet.pdf:271 of 488 -->  103 samples included
+   NOT PRINTED: 272 of 488 --> 311: N = 12 samples --> N < cutoff
+   NOT PRINTED: 273 of 488 --> 312: N = 3 samples --> N < cutoff
+   NOT PRINTED: 274 of 488 --> 313: N = 15 samples --> N < cutoff
+   NOT PRINTED: 275 of 488 --> 314: N = 14 samples --> N < cutoff
+Smallmouth_Bass
+Skin-off_Fillet.pdf:276 of 488 -->  496 samples included
+Smallmouth_Bass
+Skin-on_Fillet.pdf:277 of 488 -->  2066 samples included
+Smallmouth_Bass
+Whole.pdf:278 of 488 -->  266 samples included
+   NOT PRINTED: 279 of 488 --> 319: N = 11 samples --> N < cutoff
+Spotted_Bass
+Skin-off_Fillet.pdf:280 of 488 -->  348 samples included
+Spotted_Bass
+Skin-on_Fillet.pdf:281 of 488 -->  241 samples included
+   NOT PRINTED: 282 of 488 --> 322: N = 28 samples --> N < cutoff
+   NOT PRINTED: 283 of 488 --> 324: N = 24 samples --> N < cutoff
+   NOT PRINTED: 284 of 488 --> 326: N = 7 samples --> N < cutoff
+Largemouth_Bass
+Skin-off_Fillet.pdf:285 of 488 -->  5792 samples included
+Largemouth_Bass
+Skin-on_Fillet.pdf:286 of 488 -->  10038 samples included
+   NOT PRINTED: 287 of 488 --> 329: N = 1 samples --> N < cutoff
+Largemouth_Bass
+Whole.pdf:288 of 488 -->  691 samples included
+   NOT PRINTED: 289 of 488 --> 331: N = 23 samples --> N < cutoff
+Spotted_Sucker
+Skin-on_Fillet.pdf:290 of 488 -->  125 samples included
+Spotted_Sucker
+Whole.pdf:291 of 488 -->  63 samples included
+   NOT PRINTED: 292 of 488 --> 334: N = 14 samples --> N < cutoff
+   NOT PRINTED: 293 of 488 --> 335: N = 2 samples --> N < cutoff
+White_Perch
+Skin-off_Fillet.pdf:294 of 488 -->  46 samples included
+White_Perch
+Skin-on_Fillet.pdf:295 of 488 -->  285 samples included
+White_Perch
+Whole.pdf:296 of 488 -->  72 samples included
+White_Bass
+Skin-off_Fillet.pdf:297 of 488 -->  197 samples included
+White_Bass
+Skin-on_Fillet.pdf:298 of 488 -->  408 samples included
+White_Bass
+Whole.pdf:299 of 488 -->  54 samples included
+Hybrid_Striped_Bass
+Skin-on_Fillet.pdf:300 of 488 -->  143 samples included
+   NOT PRINTED: 301 of 488 --> 344: N = 4 samples --> N < cutoff
+   NOT PRINTED: 302 of 488 --> 345: N = 9 samples --> N < cutoff
+   NOT PRINTED: 303 of 488 --> 346: N = 2 samples --> N < cutoff
+Striped_Bass
+Skin-off_Fillet.pdf:304 of 488 -->  135 samples included
+Striped_Bass
+Skin-on_Fillet.pdf:305 of 488 -->  298 samples included
+Striped_Bass
+Whole.pdf:306 of 488 -->  44 samples included
+Silver_Redhorse
+Skin-off_Fillet.pdf:307 of 488 -->  36 samples included
+Silver_Redhorse
+Skin-on_Fillet.pdf:308 of 488 -->  58 samples included
+   NOT PRINTED: 309 of 488 --> 353: N = 28 samples --> N < cutoff
+   NOT PRINTED: 310 of 488 --> 354: N = 8 samples --> N < cutoff
+   NOT PRINTED: 311 of 488 --> 355: N = 8 samples --> N < cutoff
+   NOT PRINTED: 312 of 488 --> 356: N = 4 samples --> N < cutoff
+Black_Redhorse
+Skin-on_Fillet.pdf:313 of 488 -->  71 samples included
+   NOT PRINTED: 314 of 488 --> 359: N = 19 samples --> N < cutoff
+   NOT PRINTED: 315 of 488 --> 360: N = 9 samples --> N < cutoff
+Golden_Redhorse
+Skin-on_Fillet.pdf:316 of 488 -->  108 samples included
+   NOT PRINTED: 317 of 488 --> 362: N = 24 samples --> N < cutoff
+   NOT PRINTED: 318 of 488 --> 363: N = 4 samples --> N < cutoff
+Shorthead_Redhorse
+Skin-off_Fillet.pdf:319 of 488 -->  83 samples included
+Shorthead_Redhorse
+Skin-on_Fillet.pdf:320 of 488 -->  96 samples included
+Shorthead_Redhorse
+Whole.pdf:321 of 488 -->  130 samples included
+   NOT PRINTED: 322 of 488 --> 367: N = 3 samples --> N < cutoff
+   NOT PRINTED: 323 of 488 --> 368: N = 9 samples --> N < cutoff
+   NOT PRINTED: 324 of 488 --> 369: N = 2 samples --> N < cutoff
+   NOT PRINTED: 325 of 488 --> 371: N = 19 samples --> N < cutoff
+Flathead_Mullet
+Skin-on_Fillet.pdf:326 of 488 -->  65 samples included
+Flathead_Mullet
+Whole.pdf:327 of 488 -->  37 samples included
+   NOT PRINTED: 328 of 488 --> 375: N = 3 samples --> N < cutoff
+   NOT PRINTED: 329 of 488 --> 376: N = 3 samples --> N < cutoff
+   NOT PRINTED: 330 of 488 --> 377: N = 8 samples --> N < cutoff
+   NOT PRINTED: 331 of 488 --> 378: N = 3 samples --> N < cutoff
+   NOT PRINTED: 332 of 488 --> 379: N = 9 samples --> N < cutoff
+   NOT PRINTED: 333 of 488 --> 381: N = 6 samples --> N < cutoff
+   NOT PRINTED: 334 of 488 --> 382: N = 13 samples --> N < cutoff
+   NOT PRINTED: 335 of 488 --> 383: N = 18 samples --> N < cutoff
+Bluehead_Chub
+Whole.pdf:336 of 488 -->  42 samples included
+   NOT PRINTED: 337 of 488 --> 385: N = 5 samples --> N < cutoff
+   NOT PRINTED: 338 of 488 --> 386: N = 14 samples --> N < cutoff
+   NOT PRINTED: 339 of 488 --> 387: N = 3 samples --> N < cutoff
+   NOT PRINTED: 340 of 488 --> 388: N = 2 samples --> N < cutoff
+   NOT PRINTED: 341 of 488 --> 390: N = 2 samples --> N < cutoff
+Golden_Shiner
+Whole.pdf:342 of 488 -->  62 samples included
+   NOT PRINTED: 343 of 488 --> 392: N = 3 samples --> N < cutoff
+   NOT PRINTED: 344 of 488 --> 394: N = 12 samples --> N < cutoff
+   NOT PRINTED: 345 of 488 --> 396: N = 3 samples --> N < cutoff
+   NOT PRINTED: 346 of 488 --> 397: N = 5 samples --> N < cutoff
+   NOT PRINTED: 347 of 488 --> 398: N = 3 samples --> N < cutoff
+   NOT PRINTED: 348 of 488 --> 399: N = 3 samples --> N < cutoff
+   NOT PRINTED: 349 of 488 --> 400: N = 19 samples --> N < cutoff
+Cutthroat_Trout
+Skin-on_Fillet.pdf:350 of 488 -->  57 samples included
+Cutthroat_Trout
+Whole.pdf:351 of 488 -->  102 samples included
+Coho_Salmon
+Skin-on_Fillet.pdf:352 of 488 -->  89 samples included
+Rainbow_Trout
+Liver.pdf:353 of 488 -->  72 samples included
+Rainbow_Trout
+Skin-off_Fillet.pdf:354 of 488 -->  448 samples included
+Rainbow_Trout
+Skin-on_Fillet.pdf:355 of 488 -->  304 samples included
+Rainbow_Trout
+Whole.pdf:356 of 488 -->  488 samples included
+Sockeye_Salmon
+Skin-on_Fillet.pdf:357 of 488 -->  90 samples included
+   NOT PRINTED: 358 of 488 --> 412: N = 3 samples --> N < cutoff
+Chinook_Salmon
+Skin-on_Fillet.pdf:359 of 488 -->  119 samples included
+   NOT PRINTED: 360 of 488 --> 414: N = 8 samples --> N < cutoff
+   NOT PRINTED: 361 of 488 --> 418: N = 15 samples --> N < cutoff
+   NOT PRINTED: 362 of 488 --> 419: N = 3 samples --> N < cutoff
+   NOT PRINTED: 363 of 488 --> 420: N = 20 samples --> N < cutoff
+   NOT PRINTED: 364 of 488 --> 421: N = 23 samples --> N < cutoff
+   NOT PRINTED: 365 of 488 --> 422: N = 7 samples --> N < cutoff
+Atlantic_Rainbow_Smelt
+Skin-on_Fillet.pdf:366 of 488 -->  118 samples included
+Atlantic_Rainbow_Smelt
+Whole.pdf:367 of 488 -->  101 samples included
+Signal_Crayfish
+Tail_Muscle.pdf:368 of 488 -->  75 samples included
+   NOT PRINTED: 369 of 488 --> 428: N = 5 samples --> N < cutoff
+   NOT PRINTED: 370 of 488 --> 429: N = 2 samples --> N < cutoff
+   NOT PRINTED: 371 of 488 --> 432: N = 3 samples --> N < cutoff
+   NOT PRINTED: 372 of 488 --> 433: N = 21 samples --> N < cutoff
+   NOT PRINTED: 373 of 488 --> 434: N = 11 samples --> N < cutoff
+   NOT PRINTED: 374 of 488 --> 435: N = 30 samples --> N < cutoff
+   NOT PRINTED: 375 of 488 --> 436: N = 22 samples --> N < cutoff
+Summer_Flounder
+Whole.pdf:376 of 488 -->  31 samples included
+   NOT PRINTED: 377 of 488 --> 438: N = 16 samples --> N < cutoff
+Southern_Flounder
+Skin-on_Fillet.pdf:378 of 488 -->  76 samples included
+   NOT PRINTED: 379 of 488 --> 441: N = 14 samples --> N < cutoff
+   NOT PRINTED: 380 of 488 --> 442: N = 16 samples --> N < cutoff
+Yellow_Perch
+No_head_or_visc.pdf:381 of 488 -->  47 samples included
+Yellow_Perch
+Skin-off_Fillet.pdf:382 of 488 -->  625 samples included
+Yellow_Perch
+Skin-on_Fillet.pdf:383 of 488 -->  2190 samples included
+Yellow_Perch
+Whole.pdf:384 of 488 -->  915 samples included
+   NOT PRINTED: 385 of 488 --> 447: N = 3 samples --> N < cutoff
+Bigscale_Logperch
+Whole.pdf:386 of 488 -->  40 samples included
+   NOT PRINTED: 387 of 488 --> 451: N = 6 samples --> N < cutoff
+   NOT PRINTED: 388 of 488 --> 452: N = 8 samples --> N < cutoff
+   NOT PRINTED: 389 of 488 --> 453: N = 30 samples --> N < cutoff
+   NOT PRINTED: 390 of 488 --> 454: N = 2 samples --> N < cutoff
+   NOT PRINTED: 391 of 488 --> 455: N = 9 samples --> N < cutoff
+   NOT PRINTED: 392 of 488 --> 456: N = 9 samples --> N < cutoff
+   NOT PRINTED: 393 of 488 --> 457: N = 5 samples --> N < cutoff
+   NOT PRINTED: 394 of 488 --> 458: N = 24 samples --> N < cutoff
+   NOT PRINTED: 395 of 488 --> 459: N = 13 samples --> N < cutoff
+   NOT PRINTED: 396 of 488 --> 460: N = 15 samples --> N < cutoff
+Bluefish
+Skin-off_Fillet.pdf:397 of 488 -->  41 samples included
+Bluefish
+Skin-on_Fillet.pdf:398 of 488 -->  47 samples included
+   NOT PRINTED: 399 of 488 --> 466: N = 2 samples --> N < cutoff
+   NOT PRINTED: 400 of 488 --> 467: N = 8 samples --> N < cutoff
+White_Crappie
+Skin-off_Fillet.pdf:401 of 488 -->  871 samples included
+White_Crappie
+Skin-on_Fillet.pdf:402 of 488 -->  353 samples included
+White_Crappie
+Whole.pdf:403 of 488 -->  146 samples included
+   NOT PRINTED: 404 of 488 --> 471: N = 6 samples --> N < cutoff
+Black_Crappie
+Skin-off_Fillet.pdf:405 of 488 -->  991 samples included
+Black_Crappie
+Skin-on_Fillet.pdf:406 of 488 -->  1857 samples included
+Black_Crappie
+Whole.pdf:407 of 488 -->  98 samples included
+Brackish-Water_Corbula
+Soft_tissue.pdf:408 of 488 -->  361 samples included
+Red_Swamp_Crayfish
+Tail_Muscle.pdf:409 of 488 -->  35 samples included
+   NOT PRINTED: 410 of 488 --> 477: N = 18 samples --> N < cutoff
+   NOT PRINTED: 411 of 488 --> 478: N = 3 samples --> N < cutoff
+   NOT PRINTED: 412 of 488 --> 479: N = 5 samples --> N < cutoff
+   NOT PRINTED: 413 of 488 --> 480: N = 5 samples --> N < cutoff
+Mountain_Whitefish
+Whole.pdf:414 of 488 -->  139 samples included
+   NOT PRINTED: 415 of 488 --> 482: N = 2 samples --> N < cutoff
+   NOT PRINTED: 416 of 488 --> 483: N = 8 samples --> N < cutoff
+Sacramento_Pikeminnow
+Skin-on_Fillet.pdf:417 of 488 -->  100 samples included
+   NOT PRINTED: 418 of 488 --> 485: N = 11 samples --> N < cutoff
+   NOT PRINTED: 419 of 488 --> 486: N = 5 samples --> N < cutoff
+   NOT PRINTED: 420 of 488 --> 487: N = 11 samples --> N < cutoff
+Northern_Pikeminnow
+Whole.pdf:421 of 488 -->  142 samples included
+   NOT PRINTED: 422 of 488 --> 489: N = 17 samples --> N < cutoff
+Flathead_Catfish
+Skin-off_Fillet.pdf:423 of 488 -->  746 samples included
+   NOT PRINTED: 424 of 488 --> 491: N = 26 samples --> N < cutoff
+Flathead_Catfish
+Whole.pdf:425 of 488 -->  38 samples included
+Cobia
+Skin-off_Fillet.pdf:426 of 488 -->  39 samples included
+   NOT PRINTED: 427 of 488 --> 494: N = 2 samples --> N < cutoff
+Blacknose_Dace
+No_head_or_visc.pdf:428 of 488 -->  46 samples included
+   NOT PRINTED: 429 of 488 --> 496: N = 2 samples --> N < cutoff
+   NOT PRINTED: 430 of 488 --> 497: N = 5 samples --> N < cutoff
+   NOT PRINTED: 431 of 488 --> 498: N = 6 samples --> N < cutoff
+   NOT PRINTED: 432 of 488 --> 499: N = 24 samples --> N < cutoff
+Speckled_Dace
+Whole.pdf:433 of 488 -->  147 samples included
+   NOT PRINTED: 434 of 488 --> 501: N = 6 samples --> N < cutoff
+   NOT PRINTED: 435 of 488 --> 502: N = 20 samples --> N < cutoff
+   NOT PRINTED: 436 of 488 --> 503: N = 14 samples --> N < cutoff
+   NOT PRINTED: 437 of 488 --> 504: N = 17 samples --> N < cutoff
+   NOT PRINTED: 438 of 488 --> 506: N = 5 samples --> N < cutoff
+   NOT PRINTED: 439 of 488 --> 507: N = 13 samples --> N < cutoff
+Brown_Trout
+Skin-off_Fillet.pdf:440 of 488 -->  105 samples included
+Brown_Trout
+Skin-on_Fillet.pdf:441 of 488 -->  473 samples included
+Brown_Trout
+Whole.pdf:442 of 488 -->  363 samples included
+   NOT PRINTED: 443 of 488 --> 511: N = 3 samples --> N < cutoff
+Brook_Trout
+Skin-off_Fillet.pdf:444 of 488 -->  66 samples included
+Brook_Trout
+Skin-on_Fillet.pdf:445 of 488 -->  123 samples included
+Brook_Trout
+Whole.pdf:446 of 488 -->  360 samples included
+Splake
+Skin-on_Fillet.pdf:447 of 488 -->  83 samples included
+   NOT PRINTED: 448 of 488 --> 517: N = 7 samples --> N < cutoff
+   NOT PRINTED: 449 of 488 --> 518: N = 4 samples --> N < cutoff
+   NOT PRINTED: 450 of 488 --> 519: N = 14 samples --> N < cutoff
+Lake_Trout
+Skin-off_Fillet.pdf:451 of 488 -->  78 samples included
+Lake_Trout
+Skin-on_Fillet.pdf:452 of 488 -->  1433 samples included
+Lake_Trout
+Whole.pdf:453 of 488 -->  104 samples included
+Sauger
+Skin-off_Fillet.pdf:454 of 488 -->  63 samples included
+Sauger
+Skin-on_Fillet.pdf:455 of 488 -->  281 samples included
+Sauger
+Whole.pdf:456 of 488 -->  77 samples included
+   NOT PRINTED: 457 of 488 --> 527: N = 4 samples --> N < cutoff
+Saugeye_(Sauger-Walleye_Hybrid)
+Skin-on_Fillet.pdf:458 of 488 -->  56 samples included
+   NOT PRINTED: 459 of 488 --> 529: N = 2 samples --> N < cutoff
+Walleye
+Skin-off_Fillet.pdf:460 of 488 -->  1160 samples included
+Walleye
+Skin-on_Fillet.pdf:461 of 488 -->  10140 samples included
+Walleye
+Whole.pdf:462 of 488 -->  428 samples included
+Red_Drum
+Skin-off_Fillet.pdf:463 of 488 -->  171 samples included
+Red_Drum
+Skin-on_Fillet.pdf:464 of 488 -->  116 samples included
+   NOT PRINTED: 465 of 488 --> 536: N = 29 samples --> N < cutoff
+King_Mackerel
+Skin-off_Fillet.pdf:466 of 488 -->  80 samples included
+   NOT PRINTED: 467 of 488 --> 538: N = 9 samples --> N < cutoff
+Spanish_Mackerel
+Skin-on_Fillet.pdf:468 of 488 -->  88 samples included
+   NOT PRINTED: 469 of 488 --> 541: N = 5 samples --> N < cutoff
+   NOT PRINTED: 470 of 488 --> 543: N = 2 samples --> N < cutoff
+   NOT PRINTED: 471 of 488 --> 545: N = 2 samples --> N < cutoff
+   NOT PRINTED: 472 of 488 --> 546: N = 2 samples --> N < cutoff
+   NOT PRINTED: 473 of 488 --> 547: N = 3 samples --> N < cutoff
+Creek_Chub
+No_head_or_visc.pdf:474 of 488 -->  47 samples included
+   NOT PRINTED: 475 of 488 --> 549: N = 5 samples --> N < cutoff
+Creek_Chub
+Whole.pdf:476 of 488 -->  160 samples included
+   NOT PRINTED: 477 of 488 --> 551: N = 2 samples --> N < cutoff
+   NOT PRINTED: 478 of 488 --> 552: N = 10 samples --> N < cutoff
+   NOT PRINTED: 479 of 488 --> 553: N = 1 samples --> N < cutoff
+   NOT PRINTED: 480 of 488 --> 554: N = 3 samples --> N < cutoff
+   NOT PRINTED: 481 of 488 --> 555: N = 9 samples --> N < cutoff
+   NOT PRINTED: 482 of 488 --> 558: N = 7 samples --> N < cutoff
+   NOT PRINTED: 483 of 488 --> 559: N = 2 samples --> N < cutoff
+Leopard_Shark
+Skin-off_Fillet.pdf:484 of 488 -->  47 samples included
+   NOT PRINTED: 485 of 488 --> 561: N = 25 samples --> N < cutoff
+   NOT PRINTED: 486 of 488 --> 563: N = 2 samples --> N < cutoff
+   NOT PRINTED: 487 of 488 --> 564: N = 3 samples --> N < cutoff
+   NOT PRINTED: 488 of 488 --> 565: N = 9 samples --> N < cutoff
