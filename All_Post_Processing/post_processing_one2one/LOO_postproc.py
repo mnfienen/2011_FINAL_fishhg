@@ -7,7 +7,7 @@ import shutil
 from scipy import stats
 
 mpl.rcParams['pdf.fonttype'] = 42
-
+mpl.rcParams['axes.linewidth']=0.5
 def killer(curr_plots):
     if os.path.exists(os.path.join(os.getcwd(),curr_plots)) == True:
         shutil.rmtree(os.path.join(os.getcwd(),curr_plots))
@@ -39,18 +39,21 @@ def resid_plotter(fig,cax,x,y,DL,logFlag,figtitle,figname,subf,crow,ccol,nrows):
     DLinds = np.nonzero(DL==1)
     Detectinds = np.nonzero(DL==0)
     cax.hold(True)
-    mksize = 4.5
+    mksize = 2.5
     # plot one to one line
-    cax.plot([minxy,maxxy],[minxy,maxxy],'black')  
+    cax.plot([minxy,maxxy],[minxy,maxxy],color='0.5',lw=0.5)  
 
     # plot up the detects solid
+    
     plotx = x[Detectinds]
     ploty = y[Detectinds]
-    cax.plot(plotx,ploty,'bo',markerfacecolor = 'blue', markersize = mksize,markeredgecolor = 'black')
+    N=len(plotx)
+    cax.plot(plotx,ploty,'bo',markerfacecolor = (0,0,1,0.8), markersize = mksize,markeredgecolor = 'black',lw=0.5)
     # plot up the nondetects white
     plotx = x[DLinds]
     ploty = y[DLinds]
-    cax.plot(plotx,ploty,'bo',markerfacecolor = 'white',markersize = mksize, markeredgecolor = 'black')
+    N+=len(plotx)
+    cax.plot(plotx,ploty,'bo',markerfacecolor = 'white',markersize = mksize, markeredgecolor = 'black',lw=0.5)
     cax.set_xlim([minxy, maxxy])
     cax.set_ylim([minxy, maxxy])
 
@@ -59,7 +62,7 @@ def resid_plotter(fig,cax,x,y,DL,logFlag,figtitle,figname,subf,crow,ccol,nrows):
         cax.set_xscale('log')
     
 
-    ticknames = ['','0.01','0.1','1.0','10.0']
+    ticknames = ['0.001','0.01','0.1','1.0','']
     if crow == nrows-1:
         cax.set_xticklabels(ticknames, size=4)
     else:
@@ -69,10 +72,12 @@ def resid_plotter(fig,cax,x,y,DL,logFlag,figtitle,figname,subf,crow,ccol,nrows):
     else:
         cax.set_yticklabels([])
 
-    cax.text(0.0015,2,'{0}'.format(figtitle),size=5)
+    cax.text(0.0015,1,'{0}'.format(figtitle + '\nN=%d' %(N)),size=5)
     cax.xaxis.set_ticks_position('bottom')
     cax.yaxis.set_ticks_position('left')
-
+    cax.axhline(lw=0.5)
+    cax.axvline(lw=0.5)
+    
 
 # make a class for post-processing
 class LOO_post:
@@ -111,14 +116,29 @@ class LOO_post:
         if os.path.exists(os.path.join(os.getcwd(),subf)) == False:
             os.mkdir(os.path.join(os.getcwd(),subf))
         allcat = self.indat[cseries]
-        eunich = np.unique(allcat)
+        # find the unique SpC codes
+        eunich_spc = np.unique(allcat)
+        # now find the corresponding species and cuts
+        eunich_common = []
+        eunich_cut = []
+        # species first
+        for cs in eunich_spc:
+            eunich_inds = np.nonzero(allcat == cs)[0]
+            eunich_common.append(self.CommonName[eunich_inds[0]])
+            eunich_cut.append(self.Cut[eunich_inds[0]])
+        # concatenate together
+        eunich = np.array([eunich_common,eunich_cut,eunich_spc]).T
+        
+        # now sort based on name, then cut
+        inds = np.lexsort((eunich[:,2],eunich[:,1],eunich[:,0]))
+        eunich = eunich[inds,2].astype(int)
         i = 0
         bigfig = 0
         #set the parameters for the dimensions of subplot arrangement
         nrows = 8
         ncols = 6
         totsubplots = nrows*ncols
-        w = 7 # width in inches
+        w = 8 # width in inches
         h = nrows*w/ncols  #set length based on other dimensions      
         crow = 0
         ccol = -1

@@ -8,7 +8,7 @@ from LOO_postproc import LOO_post, killer
 # user-specified variables
 infile = 'LOO_for_plotting_4_2_2012.csv'
 clean_slate = True
-maincutoff = 20
+maincutoff = 30
 # logging information
 if os.path.exists(os.path.join(os.getcwd(),'figures')) == False:
     os.mkdir(os.path.join(os.getcwd(),'figures'))
