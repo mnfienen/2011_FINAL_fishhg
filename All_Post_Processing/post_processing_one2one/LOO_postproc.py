@@ -148,7 +148,7 @@ class LOO_post:
         cfig = plt.figure(figsize=(w,h)) 
         plt.subplots_adjust(wspace=0,hspace=0)
         for cs in eunich:
-            i+=1
+
             inds = np.nonzero(allcat==cs)[0]
             print 'running {0} of {1} --> {2}: {3} samples included'.format(i,len(eunich),cs,len(inds))
                    
@@ -203,4 +203,4 @@ class LOO_post:
             else:
                 logfile.write('   NOT PRINTED: %d of %d --> %s: N = %d samples --> N < cutoff\n' %(i,len(eunich),cs,len(inds)))
         plt.subplots_adjust(wspace=0,hspace=0)
-        plt.savefig( subf + '/one2one_plots_%d.pdf' %(bigfig))
+        plt.savefig( subf + '/one2one_plots_%d.pdf' %(bigfig+1))

@@ -14,6 +14,7 @@ N_spc = []
 for i in eunich:
     N_spc.append(len(SpC[SpC==i]))
 N_spc = np.array(N_spc)
+N_spc_all = N_spc.copy()
 numbins = 400
 len_exclude = len(N_spc[N_spc>numbins])
 N_spc[N_spc>=numbins]=0
@@ -43,6 +44,7 @@ Nevent = []
 for i in eunich:
     Nevent.append(len(Event[Event==i]))
 Nevent = np.array(Nevent)
+Nevent_all = Nevent.copy()
 numbins = 60
 len_exclude = len(Nevent[Nevent>numbins])
 Nevent[Nevent>=numbins]=0
@@ -58,4 +60,4 @@ plt.text(tx,ty,'%d Events have N > %d' %(len_exclude,numbins))
 plt.savefig('Fig_S_3.pdf')
 
 
-plt.show()
+#plt.show()
